@@ -1,37 +1,57 @@
-# BigData
+# BigData-GROUP1
 
-#### 介绍
-2023.12月xjtuse实习，上程大数据
+## 项目介绍
+### 简介
+2023.12月-2023.1月，xjtuser实习上程公司所完成的大数据项目。
+该项目一共历时4周
+项目详情可以查看网页：
 
-#### 软件架构
-软件架构说明
+> https://wiki.suncaper.net/
+
+部分文档可以在飞书查看：
+
+>  飞书链接：https://ecemf3mg97.feishu.cn/drive/folder/UVLMfeKsUlJ6N4dxMqycoGm9ndc?from=from_copylink   密码：17758G7@
+
+### 开发过程
+项目采用敏捷开发，使用了Jira Software
+详情可以参考：
+
+> http://118.113.19.161:8180/secure/RapidBoard.jspa?rapidView=690&projectKey=XJTUSE&view=detail&selectedIssue=XJTUSE-19
+
+（该网络为公司局域网）
+
+### 项目队伍
+项目成员如下：
+郭思成 219371007
+凌晨 2214414320
+钟鹏 2213611618
+张子杰 2194114697
+
+## 项目阶段
+### 阶段一(2023.12.18-2023.12.29)
+
+一共耗时两周，完成如下学习及任务
+
+1. 学习了Python
+
+2. 熟悉Linux
+
+3. 配置各类环境，包括但不限于：Hadoop，Hive，jdk1.8，Zeppelin
+4. 完成了敏捷开发学习
+
+**该阶段以第一次验收结尾**
+
+### 阶段二(2024.1.2-2024.1.5)
+1. 在Zeppelin上完成了数据统计及分析
+2. 在Zeppelin上完成了可视化展示
+3. 在Zeppelin上完成了数据清洗
+4. 完成了JSON文件的MYSQL数据录入
 
 
-#### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
+## 参与贡献
 1.  Fork 本仓库
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
