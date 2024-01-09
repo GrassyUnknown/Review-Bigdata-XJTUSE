@@ -8,7 +8,7 @@
 <!--          <div class="mask" @click="goAblum(item)">-->
 <!--            <yin-icon class="mask-icon" :icon="BOFANG"></yin-icon>-->
 <!--          </div>-->
-          <p class="card-name"  >{{ item.businessName }}</p>
+          <p class="card-name">{{ item.userName || item.businessName }}</p>
         </div>
 <!--        <p class="card-name"  >{{ item.birth }}</p>-->
       </li>

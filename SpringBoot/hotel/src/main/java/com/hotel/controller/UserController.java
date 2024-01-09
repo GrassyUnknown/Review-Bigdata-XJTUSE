@@ -1,6 +1,6 @@
 package com.hotel.controller;
 
-import com.hotel.service.BusinessService;
+import com.hotel.service.UserService;
 import com.hotel.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,18 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+import com.hotel.pojo.entity.User;
 @RestController
-@CrossOrigin(origins = "http://localhost:8080",allowCredentials = "true")
-@RequestMapping("/business")
-public class BusinessController {
+@CrossOrigin(origins = "http://localhost:8080", allowCredentials = "true")
+@RequestMapping("/user")
+public class UserController {
     @Autowired
-    private BusinessService businessService;
-
-    @GetMapping("getHotBusinessList")
+    UserService userService;
+    @GetMapping("getHotUserList")
     public R getHotBusinessList() {
-        List<com.hotel.pojo.entity.Business> businessList = businessService.getHotBusinessList();
+        List<User> businessList = userService.getHotUserList();
         return R.success("查找成功",businessList);
     }
-
 }
