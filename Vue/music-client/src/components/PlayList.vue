@@ -10,7 +10,7 @@
 <!--          </div>-->
           <p class="card-name">{{ item.userName || item.businessName }}</p>
         </div>
-<!--        <p class="card-name"  >{{ item.birth }}</p>-->
+<!--        <p class="card-name">{{ item.userName || item.businessName }}</p>-->
       </li>
     </ul>
   </div>
@@ -41,7 +41,7 @@ export default defineComponent({
 
     function goAblum(item) {
       proxy.$store.commit("setSongDetails", item);
-      routerManager(path.value, { path: `/${path.value}/${item.id}` });
+      routerManager(path.value, { path: `/${path.value}/${item.businessId}` });
     }
 
     return {

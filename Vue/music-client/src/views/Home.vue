@@ -2,7 +2,7 @@
   <!--热门商户-->
   <play-list class="play-list-container" title="热门商户" path="song-sheet-detail" :playList="hotBusinessList"></play-list>
   <!--热门用户-->
-  <play-list class="play-list-container" title="热门用户iii" path="singer-detail" :playList="hotUserList"></play-list>
+  <play-list class="play-list-container" title="热门用户" path="singer-detail" :playList="hotUserList"></play-list>
 </template>
 
 <script lang="ts" setup>

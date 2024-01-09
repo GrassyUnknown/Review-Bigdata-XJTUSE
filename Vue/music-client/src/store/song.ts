@@ -89,6 +89,7 @@ export default {
     setCurrentPlayList: (state, currentPlayList) => {
       state.currentPlayList = currentPlayList;
     },
+    // 设置商户的details
     setSongDetails: (state, songDetails) => {
       state.songDetails = songDetails;
     },
