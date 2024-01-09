@@ -6,7 +6,7 @@
 <!--    </el-carousel-item>-->
 <!--  </el-carousel>-->
   <!--热门歌单-->
-  <play-list class="play-list-container" title="热门商户" path="song-sheet-detail" :playList="songList"></play-list>
+  <play-list class="play-list-container" title="热门" path="song-sheet-detail" :playList="songList"></play-list>
   <!--热门歌手-->
   <play-list class="play-list-container" title="热门用户" path="singer-detail" :playList="singerList"></play-list>
 </template>
@@ -23,11 +23,19 @@ const songList = ref([]); // 歌单列表
 const singerList = ref([]); // 歌手列表
 // const swiperList = ref([]);// 轮播图 每次在都进行查询
 const { changeIndex } = mixin();
+
+// 下面为新增内容
+const hotBusinessList = ref([]); // 热门商户列表
+
 try {
 
   // HttpManager.getBannerList().then((res) => {
   //   swiperList.value = (res as ResponseBody).data.sort();
   // });
+
+  HttpManager.getHotBusinessList().then((res) => {
+    hotBusinessList.value = (res as ResponseBody).data.sort().slice(0, 10);
+  });
 
   HttpManager.getSongList().then((res) => {
     songList.value = (res as ResponseBody).data.sort().slice(0, 10);

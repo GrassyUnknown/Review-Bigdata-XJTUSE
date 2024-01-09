@@ -1,6 +1,6 @@
 <template>
   <div class="play-list">
-    <div class="play-title" v-if="title">{{ title }}</div>
+<!--    <div class="play-title" v-if="title">{{ title }}</div>-->
     <ul class="play-body">
       <li class="card-frame" v-for="(item, index) in playList" :key="index">
         <div class="card" @click="goAblum(item)">
@@ -26,7 +26,7 @@ import { HttpManager } from "@/api";
 
 export default defineComponent({
   components: {
-    YinIcon,
+    // YinIcon,
   },
   props: {
     title: String,
