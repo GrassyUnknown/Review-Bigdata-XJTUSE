@@ -1,7 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.utils.Result;
-import com.hotel.pojo.User;
+import com.hotel.User;
 import com.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

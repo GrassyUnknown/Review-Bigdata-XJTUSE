@@ -1,4 +1,4 @@
-package com.hotel.pojo;
+package com.hotel;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

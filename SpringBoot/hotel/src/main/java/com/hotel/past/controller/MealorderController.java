@@ -1,7 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.utils.Result;
-import com.hotel.pojo.Mealorder;
+import com.hotel.Mealorder;
 import com.hotel.service.MealorderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
