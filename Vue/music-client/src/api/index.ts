@@ -74,7 +74,13 @@ const HttpManager = {
   // 返回指定歌曲ID的歌曲
   getSongOfId: (id) => get(`song/detail?id=${id}`),
   // 返回指定歌手ID的歌曲
-  getSongOfSingerId: (id) => get(`song/singer/detail?singerId=${id}`),
+
+  // 魔改版
+  // 返回指定用户的评论
+  getSongOfSingerId: (id) => get(`review/list/userId=${id}`),
+
+
+
   // 返回指定歌手名的歌曲
   getSongOfSingerName: (keywords) => get(`song/singerName/detail?name=${keywords}`),
   // 下载音乐

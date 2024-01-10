@@ -12,7 +12,7 @@
 <!--      <el-image class="popular-img" fit="contain" :src="attachImageUrl(item.avator)" />-->
       <div class="popular-msg">
         <ul>
-          <li class="name">{{ item.userId }}</li>
+          <li class="name">{{ item.user }}</li>
           <li class="time">{{ formatDate(item.revDate) }}</li>
           <li class="content">{{ item.revText }}</li>
         </ul>
