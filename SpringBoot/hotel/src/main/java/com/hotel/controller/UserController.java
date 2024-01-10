@@ -27,7 +27,7 @@ public class UserController {
         return R.success("查找成功",businessList);
     }
 
-    @GetMapping("login/{userid}+{username}")
+    @GetMapping("login/username={userid}&password={username}")
     public R login(@PathVariable String userid,@PathVariable String username) {
         int login = userService.login(userid,username);
         return R.success("Login",login);
