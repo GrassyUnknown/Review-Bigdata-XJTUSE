@@ -1,7 +1,7 @@
 package com.hotel.service;
 
-import com.hotel.pojo.Facility;
-import com.hotel.pojo.Facilityorder;
+import com.hotel.Facility;
+import com.hotel.Facilityorder;
 
 import java.util.List;
 

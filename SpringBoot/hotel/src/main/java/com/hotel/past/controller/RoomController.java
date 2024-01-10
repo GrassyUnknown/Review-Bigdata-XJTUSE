@@ -1,7 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.utils.Result;
-import com.hotel.pojo.Room;
+import com.hotel.Room;
 import com.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,15 +1,8 @@
 <template>
-  <!--轮播图-->
-<!--  <el-carousel v-if="swiperList.length" class="swiper-container" type="card" height="20vw" :interval="4000">-->
-<!--    <el-carousel-item v-for="(item, index) in swiperList" :key="index">-->
-<!--      <img :src="HttpManager.attachImageUrl(item.pic)" />-->
-<!--    </el-carousel-item>-->
-<!--  </el-carousel>-->
-  <!--热门歌单-->
-<!--  <play-list class="play-list-container" title="热门商户" path="song-sheet-detail" :playList="songList"></play-list>-->
+  <!--热门商户-->
   <play-list class="play-list-container" title="热门商户" path="song-sheet-detail" :playList="hotBusinessList"></play-list>
-  <!--热门歌手-->
-  <play-list class="play-list-container" title="热门用户" path="singer-detail" :playList="singerList"></play-list>
+  <!--热门用户-->
+  <play-list class="play-list-container" title="热门用户" path="singer-detail" :playList="hotUserList"></play-list>
 </template>
 
 <script lang="ts" setup>
@@ -20,28 +13,19 @@ import {  NavName } from "@/enums";
 import { HttpManager } from "@/api";
 import mixin from "@/mixins/mixin";
 
-const songList = ref([]); // 歌单列表
-const singerList = ref([]); // 歌手列表
-// const swiperList = ref([]);// 轮播图 每次在都进行查询
 const { changeIndex } = mixin();
 
-const hotBusinessList = ref([]); // 歌手列表
+const hotBusinessList = ref([]);   // 商户列表
+const hotUserList = ref([]);      //  用户列表
 
 try {
 
-  // HttpManager.getBannerList().then((res) => {
-  //   swiperList.value = (res as ResponseBody).data.sort();
-  // });
   HttpManager.getHotBusinessList().then((res) => {
-    hotBusinessList.value = (res as ResponseBody).data.slice(0, 10);
+    hotBusinessList.value = (res as ResponseBody).data.slice(0,10);
   });
 
-  HttpManager.getSongList().then((res) => {
-    songList.value = (res as ResponseBody).data.sort().slice(0, 10);
-  });
-
-  HttpManager.getAllSinger().then((res) => {
-    singerList.value = (res as ResponseBody).data.sort().slice(0, 10);
+  HttpManager.getHotUserList().then((res) => {
+    hotUserList.value = (res as ResponseBody).data.slice(0, 10);
   });
 
   onMounted(() => {
@@ -57,15 +41,7 @@ try {
 <style lang="scss" scoped>
 @import "@/assets/css/var.scss";
 
-/*轮播图*/
-.swiper-container {
-  width: 90%;
-  margin: auto;
-  padding-top: 20px;
-  img {
-    width: 100%;
-  }
-}
+
 
 .swiper-container:deep(.el-carousel__indicators.el-carousel__indicators--outside) {
   display: inline-block;

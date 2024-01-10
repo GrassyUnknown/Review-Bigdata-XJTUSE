@@ -1,6 +1,6 @@
 package com.hotel.service;
 
-import com.hotel.pojo.Room;
+import com.hotel.Room;
 
 import java.util.List;
 

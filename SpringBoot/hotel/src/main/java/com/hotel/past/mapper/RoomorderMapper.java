@@ -1,6 +1,6 @@
 package com.hotel.mapper;
 
-import com.hotel.pojo.Roomorder;
+import com.hotel.Roomorder;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

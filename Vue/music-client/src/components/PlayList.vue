@@ -4,13 +4,13 @@
     <ul class="play-body">
       <li class="card-frame" v-for="(item, index) in playList" :key="index">
         <div class="card" @click="goAblum(item)">
-<!--          <el-image class="card-img" fit="contain" :src="attachImageUrl(item.pic)" />-->
-<!--          <div class="mask" @click="goAblum(item)">-->
-<!--            <yin-icon class="mask-icon" :icon="BOFANG"></yin-icon>-->
-<!--          </div>-->
-          <p class="card-name"  >{{ item.businessName }}</p>
+          <el-image class="card-img" fit="contain" :src="attachImageUrl(item.pic)" />
+          <div class="mask" @click="goAblum(item)">
+            <yin-icon class="mask-icon" :icon="BOFANG"></yin-icon>
+          </div>
+<!--          <p class="card-name">{{ item.userName || item.businessName }}</p>-->
         </div>
-<!--        <p class="card-name"  >{{ item.birth }}</p>-->
+        <p class="card-name">{{ item.userName || item.businessName }}</p>
       </li>
     </ul>
   </div>
@@ -41,7 +41,7 @@ export default defineComponent({
 
     function goAblum(item) {
       proxy.$store.commit("setSongDetails", item);
-      routerManager(path.value, { path: `/${path.value}/${item.id}` });
+      routerManager(path.value, { path: `/${path.value}/${item.businessId}` });
     }
 
     return {

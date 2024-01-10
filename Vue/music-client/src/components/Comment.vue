@@ -9,12 +9,12 @@
   </div>
   <ul class="popular">
     <li v-for="(item, index) in commentList" :key="index">
-      <el-image class="popular-img" fit="contain" :src="attachImageUrl(item.avator)" />
+<!--      <el-image class="popular-img" fit="contain" :src="attachImageUrl(item.avator)" />-->
       <div class="popular-msg">
         <ul>
-          <li class="name">{{ item.username }}</li>
-          <li class="time">{{ formatDate(item.createTime) }}</li>
-          <li class="content">{{ item.content }}</li>
+          <li class="name">{{ item.user }}</li>
+          <li class="time">{{ formatDate(item.revDate) }}</li>
+          <li class="content">{{ item.revText }}</li>
         </ul>
       </div>
       <!--这特么是直接拿到了评论的id-->
@@ -34,15 +34,16 @@ import { Delete } from "@element-plus/icons-vue";
 import YinIcon from "@/components/layouts/YinIcon.vue";
 import mixin from "@/mixins/mixin";
 import { HttpManager } from "@/api";
-import { Icon } from "@/enums";
+import {Icon, NavName} from "@/enums";
 import { formatDate } from "@/utils";
+import songList from "@/components/SongList.vue";
 
 const { proxy } = getCurrentInstance();
 const store = useStore();
 const { checkStatus } = mixin();
 
 const props = defineProps({
-  playId: Number || String, // 歌曲ID 或 歌单ID
+  playId: String, // 商家id
   type: Number, // 歌单 1 / 歌曲 0
 });
 
@@ -56,29 +57,39 @@ const iconList = reactive({
 const userId = computed(() => store.getters.userId);
 const songId = computed(() => store.getters.songId);
 
-watch(songId, () => {
-  getComment(songId.value);
-});
+const songDetails = computed(() => store.getters.songDetails);
+const businessId = ref("");
 
-onMounted(() => {
-  getComment(playId.value);
-});
+// 获取businessId
+businessId.value = songDetails.value.businessId;
+
+try {
+
+  HttpManager.getCommentList(businessId.value).then((res) => {
+    commentList.value = (res as ResponseBody).data;
+  });
+
+} catch (error) {
+  console.error(error);
+}
+
+
+// alert(songId.value);s
 
 // 获取所有评论
-async function getComment(id) {
-  try {
-    const result = (await HttpManager.getAllComment(type.value, id)) as ResponseBody;
-    commentList.value = result.data;
-    for (let index = 0; index < commentList.value.length; index++) {
-      // 获取评论用户的昵称和头像
-      const resultUser = (await HttpManager.getUserOfId(commentList.value[index].userId)) as ResponseBody;
-      commentList.value[index].avator = resultUser.data[0].avator;
-      commentList.value[index].username = resultUser.data[0].username;
-    }
-  } catch (error) {
-    console.error('[获取所有评论失败]===>', error);
-  }
-}
+// async function getComment(id) {
+//     const result = (await HttpManager.getAllComment(type.value, id)) as ResponseBody;
+//     commentList.value = result.data;
+//     for (let index = 0; index < commentList.value.length; index++) {
+//       // 获取评论用户的昵称和头像
+//       const resultUser = (await HttpManager.getUserOfId(commentList.value[index].userId)) as ResponseBody;
+//       commentList.value[index].avator = resultUser.data[0].avator;
+//       commentList.value[index].username = resultUser.data[0].username;
+//     }
+//   } catch (error) {
+//     console.error('[获取所有评论失败]===>', error);
+//   }
+// }
 
 // 提交评论
 async function submitComment() {

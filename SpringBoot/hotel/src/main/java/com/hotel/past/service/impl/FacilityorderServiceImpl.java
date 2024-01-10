@@ -1,8 +1,8 @@
 package com.hotel.service.impl;
 
 import com.hotel.mapper.FacilityorderMapper;
-import com.hotel.pojo.Facility;
-import com.hotel.pojo.Facilityorder;
+import com.hotel.Facility;
+import com.hotel.Facilityorder;
 import com.hotel.service.FacilityorderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

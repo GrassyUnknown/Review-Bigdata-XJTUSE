@@ -1,12 +1,16 @@
 <template>
   <el-container>
     <el-aside class="album-slide">
-<!--      <el-image class="album-img" fit="contain" :src="attachImageUrl(songDetails.pic)" />-->
-      <h3 class="album-info">{{ songDetails.title }}</h3>
+      <el-image class="album-img" fit="contain" :src="attachImageUrl(songDetails.pic)" />
+      <h3 class="album-info">Welcome To</h3>
+      <h3 class="album-info">{{ songDetails.businessName }}</h3>
     </el-aside>
     <el-main class="album-main">
       <h1>简介</h1>
-      <p>{{ songDetails.introduction }}</p>
+      <p>{{ songDetails.categories }}</p>
+      <p>latitude:{{ songDetails.latitude }}</p>
+      <p>longitude:{{ songDetails.longitude }}</p>
+      <p>{{ songDetails.isopen==1?'正在营业':'不在营业' }}</p>
       <!--评分-->
       <div class="album-score">
         <div>
@@ -51,10 +55,19 @@ export default defineComponent({
     const disabledRank = ref(false);
     const assistText = ref("评价");
     // const evaluateList = ref(["很差", "较差", "还行", "推荐", "力推"]);
-    const songDetails = computed(() => store.getters.songDetails); // 单个歌单信息
+    const songDetails = computed(() => store.getters.songDetails); // 单个歌单信息 2024.1.9 改为商户信息
     const nowUserId = computed(() => store.getters.userId);
 
-    nowSongListId.value = songDetails.value.id; // 给歌单ID赋值
+    const jsonList = ref([]); // 存放的介绍
+
+    // 赋值
+    nowSongListId.value = songDetails.value.businessId; // 给歌单ID赋值
+    nowScore.value = songDetails.value.stars;
+    nowRank.value = songDetails.value.stars;
+    // alert(songDetails.value.businessId)
+    // alert(nowRank.value)
+
+
 
     // 收集歌单里面的歌曲
     async function getSongId(id) {
@@ -66,6 +79,8 @@ export default defineComponent({
         currentSongList.value.push(resultSong.data[0]);
       }
     }
+
+
     // 获取评分
     async function getRank(id) {
       const result = (await HttpManager.getRankOfSongListId(id)) as ResponseBody;
@@ -77,6 +92,8 @@ export default defineComponent({
       disabledRank.value = true;
       assistText.value = "已评价";
     }
+
+
     // 提交评分
     async function pushValue() {
       if (disabledRank.value || !checkStatus()) return;
@@ -102,18 +119,19 @@ export default defineComponent({
       }
     }
 
-    getUserRank(nowUserId.value, nowSongListId.value);
-    getRank(nowSongListId.value); // 获取评分
-    getSongId(nowSongListId.value); // 获取歌单里面的歌曲ID
+    // getUserRank(nowUserId.value, nowSongListId.value);
+    // getRank(nowSongListId.value); // 获取评分
+    // getSongId(nowSongListId.value); // 获取歌单里面的歌曲ID
 
     return {
       songDetails,
+      jsonList: jsonList.value,
       rank: nowRank,
       score: nowScore,
       disabledRank,
       assistText,
       currentSongList,
-      songListId: nowSongListId,
+      songListId: songDetails,
       attachImageUrl: HttpManager.attachImageUrl,
       pushValue,
     };

@@ -1,7 +1,7 @@
 package com.hotel.mapper;
 
-import com.hotel.pojo.Facility;
-import com.hotel.pojo.Facilityorder;
+import com.hotel.Facility;
+import com.hotel.Facilityorder;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

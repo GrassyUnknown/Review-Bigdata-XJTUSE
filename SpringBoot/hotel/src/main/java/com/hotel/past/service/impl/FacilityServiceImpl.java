@@ -1,7 +1,7 @@
 package com.hotel.service.impl;
 
 import com.hotel.mapper.FacilityMapper;
-import com.hotel.pojo.Facility;
+import com.hotel.Facility;
 import com.hotel.service.FacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
