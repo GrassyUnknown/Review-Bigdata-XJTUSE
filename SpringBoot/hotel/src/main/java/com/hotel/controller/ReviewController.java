@@ -19,4 +19,10 @@ public class ReviewController {
         List<Review> reciewList = reviewService.getReviewList(businessId);
         return R.success("成功", reciewList);
     }
+
+    @GetMapping("/list/userId={userId}")
+    public R getReviewUserList(@PathVariable String userId) {
+        List<Review> userList = reviewService.getReviewUserList(userId);
+        return R.success("成功",userList);
+    }
 }

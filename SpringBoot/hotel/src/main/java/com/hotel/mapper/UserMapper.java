@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    @Select("select * from user limit 10")
+    @Select("select * from user where user_index is not null limit 10")
     List<User> getHotUserList();
 
 }

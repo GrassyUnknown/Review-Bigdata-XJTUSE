@@ -9,4 +9,9 @@ import java.util.List;
 public interface ReviewMapper {
     @Select("select * from review where business_id=#{businessId}")
     List<Review> getReviewList(String businessId);
+
+    @Select("select * from review where user_id=#{userId}")
+    List<Review> getReviewUserList(String userId);
+
+
 }
