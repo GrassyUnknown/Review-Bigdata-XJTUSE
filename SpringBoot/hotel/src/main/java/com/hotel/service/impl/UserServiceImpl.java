@@ -16,7 +16,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-<<<<<<< HEAD
     private UserMapper userMapper;
 
     @Override
@@ -24,13 +23,10 @@ public class UserServiceImpl implements UserService {
         String[] friends = userMapper.getUserFriends(userid).split(",");
 
         return userMapper.getUserFriendList(friends);
-=======
-    UserMapper userMapper;
 
 
     @Override
     public List<User> getHotUserList() {
         return userMapper.getHotUserList();
->>>>>>> origin/UI_LC
     }
 }
