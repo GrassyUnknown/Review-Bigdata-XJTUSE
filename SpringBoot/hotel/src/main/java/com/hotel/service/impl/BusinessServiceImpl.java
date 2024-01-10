@@ -22,4 +22,9 @@ public class BusinessServiceImpl implements BusinessService {
     public List<Business> searchBusinessList(String keyword) {
         return businessMapper.searchBusinessList(keyword);
     }
+
+    @Override
+    public List<Business> getBusinessList() {
+        return businessMapper.getBusinessList();
+    }
 }

@@ -21,6 +21,12 @@ public class BusinessController {
         return R.success("查找成功",businessList);
     }
 
+    @GetMapping("getBusinessList")
+    public R getBusinessList() {
+        List<Business> businessList = businessService.getBusinessList();
+        return R.success("查找成功",businessList);
+    }
+
     @GetMapping("searchBusinessList/{keyword}")
     public R searchBusinessList(@PathVariable String keyword) {
         System.out.println(keyword);

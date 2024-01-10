@@ -13,4 +13,6 @@ public interface BusinessMapper {
     @Select("select * from business where business_name like '%${keyword}%'")
     List<Business> searchBusinessList(String keyword);
 
+    @Select("select * from business limit 200")
+    List<Business> getBusinessList();
 }
