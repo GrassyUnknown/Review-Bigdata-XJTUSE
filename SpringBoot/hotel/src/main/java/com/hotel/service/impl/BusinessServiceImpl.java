@@ -3,7 +3,6 @@ package com.hotel.service.impl;
 import com.hotel.mapper.BusinessMapper;
 import com.hotel.pojo.entity.Business;
 import com.hotel.service.BusinessService;
-import com.hotel.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

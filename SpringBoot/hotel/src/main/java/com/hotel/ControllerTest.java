@@ -1,7 +1,6 @@
 package com.hotel;
 
 import com.hotel.utils.R;
-import com.hotel.utils.Result;
 import com.hotel.pojo.entity.Business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
