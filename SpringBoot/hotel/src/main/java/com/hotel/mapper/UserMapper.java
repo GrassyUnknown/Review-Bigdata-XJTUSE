@@ -8,6 +8,8 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
+    @Select("select * from user where user_id = #{userid}")
+    List<User> getUserById(String userid);
 
     @Select("select user_friends from user where user_id = #{userid}")
     String getUserFriends(String userid);

@@ -34,4 +34,10 @@ public class UserController {
         return R.error("Login failed");
     }
 
+    @GetMapping("getUser/{userid}")
+    public R getUserById(@PathVariable String userid) {
+        User user = userService.getUserById(userid);
+        return R.success("查找成功",user);
+    }
+
 }

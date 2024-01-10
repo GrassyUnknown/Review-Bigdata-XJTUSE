@@ -9,5 +9,7 @@ public interface UserService {
 
     List<User> getHotUserList();
 
+    User getUserById(String userid);
+
     User login(String userid,String username);
 }
