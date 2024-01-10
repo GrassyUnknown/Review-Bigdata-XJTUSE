@@ -18,7 +18,7 @@ public class UserController {
     @GetMapping("getUserFriendList/{userid}")
     public R getUserFriendList(@PathVariable String userid) {
         List<User> userList = userService.getUserFriendList(userid);
-        return R.success("查找成功",userList);
+        return R.success("查找成功", userList);
     }
 
     @GetMapping("getHotUserList")

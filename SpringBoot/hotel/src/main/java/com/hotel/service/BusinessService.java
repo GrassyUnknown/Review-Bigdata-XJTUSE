@@ -11,4 +11,5 @@ public interface BusinessService {
     List<Business> searchBusinessList(String keyword);
 
     List<Business> getBusinessList();
+    List<Business> getBusinessListByCategory(String keyword);
 }

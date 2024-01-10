@@ -15,4 +15,7 @@ public interface BusinessMapper {
 
     @Select("select * from business limit 1000")
     List<Business> getBusinessList();
+
+    @Select("select * from business where categories like '%${keyword}%' limit 200")
+    List<Business> getBusinessListByCategory(String keyword);
 }

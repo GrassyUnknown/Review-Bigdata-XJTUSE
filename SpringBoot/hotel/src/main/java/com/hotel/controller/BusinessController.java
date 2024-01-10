@@ -27,6 +27,12 @@ public class BusinessController {
         return R.success("查找成功",businessList);
     }
 
+    @GetMapping("getBusinessList/{country}")
+    public R getBusinessListByCategory(@PathVariable String country) {
+        List<Business> businessList = businessService.getBusinessListByCategory(country);
+        return R.success("查找成功",businessList);
+    }
+
     @GetMapping("searchBusinessList/{keyword}")
     public R searchBusinessList(@PathVariable String keyword) {
         System.out.println(keyword);

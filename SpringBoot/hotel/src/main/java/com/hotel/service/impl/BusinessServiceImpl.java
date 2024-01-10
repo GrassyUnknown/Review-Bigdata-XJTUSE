@@ -27,4 +27,9 @@ public class BusinessServiceImpl implements BusinessService {
     public List<Business> getBusinessList() {
         return businessMapper.getBusinessList();
     }
+
+    @Override
+    public List<Business> getBusinessListByCategory(String keyword) {
+        return businessMapper.getBusinessListByCategory(keyword);
+    }
 }
