@@ -9,6 +9,7 @@
     <foreach collection="friends" item="user_id" separator="," open="(" close=")">
     #{user_id}
     </foreach>
+    limit 100
     </select>
 
 </mapper>
