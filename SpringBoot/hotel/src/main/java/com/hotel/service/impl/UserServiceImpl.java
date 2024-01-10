@@ -19,9 +19,8 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.getUserFriendList(friends);
     }
-
     @Override
-    public List<User> getHotUserList() {
+    public List<User> getHotUserList () {
         return userMapper.getHotUserList();
     }
 }

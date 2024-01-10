@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface UserService {
     List<User> getUserFriendList(String userid);
-    List<User> getHotUserList();
+
+    public List<User> getHotUserList();
+
 }
