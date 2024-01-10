@@ -23,4 +23,11 @@ public class UserServiceImpl implements UserService {
     public List<User> getHotUserList () {
         return userMapper.getHotUserList();
     }
+
+    @Override
+    public int login(String userid, String username) {
+        if(userMapper.login(userid,username).isEmpty())return 0;
+        if(userMapper.login(userid,username)==null)return 0;
+        else return 1;
+    }
 }

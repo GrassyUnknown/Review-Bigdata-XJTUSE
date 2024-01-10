@@ -26,4 +26,11 @@ public class UserController {
         List<User> businessList = userService.getHotUserList();
         return R.success("查找成功",businessList);
     }
+
+    @GetMapping("login/{userid}+{username}")
+    public R login(@PathVariable String userid,@PathVariable String username) {
+        int login = userService.login(userid,username);
+        return R.success("Login",login);
+    }
+
 }

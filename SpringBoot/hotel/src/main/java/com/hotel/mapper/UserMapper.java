@@ -17,4 +17,6 @@ public interface UserMapper {
     @Select("select * from user where user_index is not null limit 10")
     List<User> getHotUserList();
 
+    @Select("select * from user where user_id = #{userid} and user_name = #{username}")
+    List<User> login(String userid, String username);
 }
