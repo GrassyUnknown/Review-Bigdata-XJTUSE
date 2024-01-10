@@ -29,8 +29,8 @@ public class UserController {
 
     @GetMapping("login/username={userid}&password={username}")
     public R login(@PathVariable String userid,@PathVariable String username) {
-        int login = userService.login(userid,username);
-        if(login==1)return R.success("Login successful",null);
+        User user = userService.login(userid,username);
+        if(user!=null)return R.success("Login successful",user);
         return R.error("Login failed");
     }
 

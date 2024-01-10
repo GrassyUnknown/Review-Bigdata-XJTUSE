@@ -25,9 +25,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int login(String userid, String username) {
-        if(userMapper.login(userid,username).isEmpty())return 0;
-        if(userMapper.login(userid,username)==null)return 0;
-        else return 1;
+    public User login(String userid, String username) {
+        List<User> user=userMapper.login(userid,username);
+        if(user.isEmpty())return null;
+        else return user.get(0);
     }
 }

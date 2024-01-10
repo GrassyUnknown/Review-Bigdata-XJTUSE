@@ -9,5 +9,5 @@ public interface UserService {
 
     List<User> getHotUserList();
 
-    int login(String userid,String username);
+    User login(String userid,String username);
 }
