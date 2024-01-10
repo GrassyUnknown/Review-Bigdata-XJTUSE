@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface BusinessMapper {
-    @Select("select * from business limit 10")
+    @Select("select * from business where business_index is not null limit 10")
     List<Business> getHotBusinessList();
 
     @Select("select * from business where business_name like '%${keyword}%'")
