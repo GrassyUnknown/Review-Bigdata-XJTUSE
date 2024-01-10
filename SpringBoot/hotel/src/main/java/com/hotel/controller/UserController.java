@@ -30,7 +30,8 @@ public class UserController {
     @GetMapping("login/username={userid}&password={username}")
     public R login(@PathVariable String userid,@PathVariable String username) {
         int login = userService.login(userid,username);
-        return R.success("Login",login);
+        if(login==1)return R.success("Login successful",null);
+        return R.error("Login failed");
     }
 
 }
