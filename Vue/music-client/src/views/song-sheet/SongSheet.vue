@@ -35,16 +35,19 @@ export default defineComponent({
     const allPlayList = ref([]); // 歌单
     const data = computed(() => allPlayList.value.slice((currentPage.value - 1) * pageSize.value, currentPage.value * pageSize.value));
 
-    // 获取全部歌单
+
+    // 获取全部商户
     async function getSongList() {
       allPlayList.value = ((await HttpManager.getSongList()) as ResponseBody).data;
       currentPage.value = 1;
     }
-    // 通过类别获取歌单
-    async function getSongListOfStyle(style) {
-      allPlayList.value = ((await HttpManager.getSongListOfStyle(style)) as ResponseBody).data;
+
+    async function getSongListOfStyle(name) {
+      allPlayList.value = ((await HttpManager.getSongListOfStyle(name)) as ResponseBody).data;
       currentPage.value = 1;
     }
+
+    // 通过类别获取歌单
 
     try {
       getSongList();

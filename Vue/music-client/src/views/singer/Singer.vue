@@ -21,6 +21,8 @@ import YinNav from "@/components/layouts/YinNav.vue";
 import PlayList from "@/components/PlayList.vue";
 import { singerStyle } from "@/enums";
 import { HttpManager } from "@/api";
+import {useStore} from "vuex";
+import mixin from "@/mixins/mixin";
 
 // data
 const activeName = ref("全部歌手");
@@ -28,18 +30,23 @@ const pageSize = ref(15); // 页数
 const currentPage = ref(1); // 当前页
 const allPlayList = ref([]);
 // computed
+
+// 获得当前登录用户的ID
 const data = computed(() => {
   return allPlayList.value.slice((currentPage.value - 1) * pageSize.value, currentPage.value * pageSize.value);
 });
+    const store = useStore();
+    const userId = computed(() => store.getters.userId);
+
 
 // 获取所有歌手
-async function getAllSinger() {
-  const result = (await HttpManager.getAllSinger()) as ResponseBody;
+async function getAllSinger(userId:any) {
+  const result = (await HttpManager.getAllSinger(userId)) as ResponseBody;
   currentPage.value = 1;
   allPlayList.value = result.data;
 }
 
-getAllSinger();
+getAllSinger(userId.value);
 
 // 获取当前页
 function handleCurrentChange(val) {

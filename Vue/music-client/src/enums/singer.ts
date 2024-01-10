@@ -4,13 +4,13 @@ export const singerStyle = [
     type: "-1",
   },
   {
-    name: "好友1",
+    name: "推荐好友",
     type: "1",
   },
-  {
-    name: "好友2",
-    type: "0",
-  },
+  // {
+  //   name: "好友2",
+  //   type: "0",
+  // },
   // {
   //   name: "组合歌手",
   //   type: "2",
