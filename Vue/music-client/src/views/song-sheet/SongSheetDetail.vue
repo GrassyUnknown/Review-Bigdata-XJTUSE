@@ -10,7 +10,7 @@
       <p>{{ songDetails.categories }}</p>
       <p>latitude:{{ songDetails.latitude }}</p>
       <p>longitude:{{ songDetails.longitude }}</p>
-      <p>{{ songDetails.isopen==1?'正在营业':'不在营业' }}</p>
+      <p>{{ songDetails.isOpen==1?'正在营业':'不在营业' }}</p>
       <!--评分-->
       <div class="album-score">
         <div>
