@@ -61,8 +61,18 @@ public class User implements Serializable {
 
     private Integer userComplimentPhotos;
 
-    private Integer userFunny;
 
+
+    private Integer userFunny;
+    private Integer userIndex;
+
+    public Integer getUserIndex() {
+        return userIndex;
+    }
+
+    public void setUserIndex(Integer userIndex) {
+        this.userIndex = userIndex;
+    }
 
     public String getUserId() {
         return userId;
