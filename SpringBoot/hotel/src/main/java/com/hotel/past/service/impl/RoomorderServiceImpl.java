@@ -1,7 +1,7 @@
 package com.hotel.service.impl;
 
 import com.hotel.mapper.RoomorderMapper;
-import com.hotel.pojo.Roomorder;
+import com.hotel.Roomorder;
 import com.hotel.service.RoomorderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

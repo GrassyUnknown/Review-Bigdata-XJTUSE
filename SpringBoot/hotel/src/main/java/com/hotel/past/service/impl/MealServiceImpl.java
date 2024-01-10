@@ -1,7 +1,7 @@
 package com.hotel.service.impl;
 
 import com.hotel.mapper.MealMapper;
-import com.hotel.pojo.Meal;
+import com.hotel.Meal;
 import com.hotel.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

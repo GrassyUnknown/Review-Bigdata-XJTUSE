@@ -1,0 +1,406 @@
+﻿.ax_default {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  letter-spacing:normal;
+  color:#666666;
+  vertical-align:none;
+  text-align:center;
+  line-height:normal;
+  text-transform:none;
+}
+._默认样式 {
+}
+.primary_button {
+  color:#FFFFFF;
+}
+._一级标题 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  font-size:32px;
+  color:#333333;
+  text-align:left;
+}
+._二级标题 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  font-size:24px;
+  color:#333333;
+  text-align:left;
+}
+._三级标题 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  font-size:18px;
+  color:#333333;
+  text-align:left;
+}
+._四级标题 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  color:#333333;
+  text-align:left;
+}
+._五级标题 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  font-size:13px;
+  color:#333333;
+  text-align:left;
+}
+._六级标题 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  font-size:10px;
+  color:#333333;
+  text-align:left;
+}
+._段落 {
+  color:#333333;
+  text-align:left;
+}
+._表单提示文本 {
+  color:#999999;
+}
+._表单禁用 {
+}
+._文本链接 {
+  color:#0000FF;
+}
+._鼠标悬停文本链接时 {
+}
+._鼠标按下文本链接时 {
+}
+._流程形状 {
+}
+.new_style {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:normal;
+  font-style:normal;
+  font-size:14px;
+  color:#2F8CFF;
+  text-align:left;
+}
+.basicbutton-embossed {
+  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:16px;
+  color:#FFFFFF;
+  text-align:center;
+}
+.box_1 {
+}
+._自定义_三级菜单 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:normal;
+  font-style:normal;
+  font-size:16px;
+  color:#666666;
+  text-align:left;
+}
+._自定义_一级菜单 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:18px;
+  color:#3BB19C;
+  text-align:left;
+}
+._水平线 {
+  color:#333333;
+}
+.primary-button {
+  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:16px;
+  color:#FFFFFF;
+  text-align:center;
+  line-height:16px;
+}
+._垂直线 {
+}
+._自定义_蓝1 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_蓝2 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_蓝3 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_绿1 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_绿2 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_绿3 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_橙1 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_橙2 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_橙3 {
+  font-size:14px;
+  color:#FFFFFF;
+}
+._自定义_深蓝 {
+  font-size:14px;
+  color:#333E50;
+}
+._自定义_标题栏1 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:normal;
+  font-style:normal;
+  font-size:18px;
+  color:#3BB19C;
+  text-align:left;
+}
+._连接线 {
+  color:#333333;
+}
+._形状 {
+  font-size:13px;
+  color:#000000;
+}
+._文本段落 {
+  font-size:13px;
+  color:#000000;
+  text-align:left;
+}
+._文本框 {
+  font-size:13px;
+  color:#000000;
+  text-align:left;
+}
+._多行文本框 {
+  font-size:13px;
+  color:#000000;
+  text-align:left;
+}
+._复选框 {
+  font-size:13px;
+  color:#000000;
+  text-align:left;
+}
+._单选按钮 {
+  font-size:13px;
+  color:#000000;
+  text-align:left;
+}
+._下拉列表框 {
+  font-size:13px;
+  color:#000000;
+  text-align:left;
+}
+._下拉列表框1 {
+  color:#000000;
+  text-align:left;
+}
+._表格 {
+}
+.basicbutton {
+  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:16px;
+  color:#FFFFFF;
+  text-align:center;
+}
+._形状1 {
+}
+.basicbutton-outline {
+  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:16px;
+  color:#1BBC9C;
+  text-align:center;
+}
+._水平线1 {
+}
+._水平线2 {
+}
+._文本框1 {
+  color:#000000;
+  text-align:left;
+}
+.html_button {
+  text-align:center;
+}
+._图片 {
+  color:#000000;
+}
+._默认样式1 {
+}
+.title3 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:18px;
+  color:#3BB19C;
+  text-align:left;
+}
+.basictextlabel {
+  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:13px;
+  color:#1BBC9C;
+  text-align:center;
+}
+._默认样式2 {
+}
+.button {
+}
+.checkbox {
+  text-align:left;
+}
+.radio_button {
+  text-align:left;
+}
+._文本段落1 {
+  text-align:left;
+}
+._复选框1 {
+  text-align:left;
+}
+.link_button {
+  color:#169BD5;
+}
+.droplist {
+  color:#000000;
+  text-align:left;
+}
+.list_box {
+  color:#000000;
+  text-align:left;
+}
+.grouped-buttons {
+  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:16px;
+  color:#FFFFFF;
+  text-align:center;
+  line-height:16px;
+}
+.tree_node {
+  text-align:left;
+}
+.basicbutton1 {
+  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-weight:500;
+  font-style:normal;
+  font-size:16px;
+  color:#FFFFFF;
+  text-align:center;
+}
+._水平线3 {
+}
+.box_3 {
+}
+.icon {
+}
+.ellipse {
+}
+.image {
+}
+.placeholder {
+}
+.text_area {
+  color:#000000;
+  text-align:left;
+}
+.label {
+  font-size:14px;
+  text-align:left;
+}
+.text_field {
+  color:#000000;
+  text-align:left;
+}
+.box_2 {
+}
+.sticky_1 {
+  text-align:left;
+}
+.flow_shape {
+}
+.table_cell {
+}
+.shape {
+}
+.image1 {
+  color:#000000;
+}
+.iconfont {
+  font-family:"iconfont", sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:18px;
+  color:#666666;
+}
+.box_11 {
+}
+.box_21 {
+}
+.line {
+}
+.label1 {
+  font-size:14px;
+  text-align:left;
+}
+.ellipse1 {
+}
+.paragraph {
+  text-align:left;
+}
+.heading_1 {
+  font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
+  font-weight:700;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+._形状2 {
+}
+.snapshot {
+}
+._文本段落2 {
+  text-align:left;
+}
+.line1 {
+}
+.box_12 {
+}
+._形状3 {
+  font-family:"微软雅黑 Bold", "微软雅黑", sans-serif;
+  font-weight:700;
+  font-style:normal;
+  font-size:16px;
+  color:#1ABC9C;
+}
+.ellipse2 {
+}
+textarea, select, input, button { outline: none; }

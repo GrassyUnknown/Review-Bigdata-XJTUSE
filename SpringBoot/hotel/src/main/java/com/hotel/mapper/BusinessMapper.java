@@ -9,4 +9,8 @@ import java.util.List;
 public interface BusinessMapper {
     @Select("select * from business limit 10")
     List<Business> getHotBusinessList();
+
+    @Select("select * from business where business_name like '%${keyword}%'")
+    List<Business> searchBusinessList(String keyword);
+
 }

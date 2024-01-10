@@ -1,6 +1,6 @@
 package com.hotel.service;
 
-import com.hotel.pojo.Meal;
+import com.hotel.Meal;
 
 import java.util.List;
 
