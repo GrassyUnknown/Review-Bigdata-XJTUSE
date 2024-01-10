@@ -46,6 +46,8 @@ public class Business implements Serializable {
 
     private String hours;
 
+    private Integer businessIndex;
+
 
     public String getBusinessId() {
         return businessId;

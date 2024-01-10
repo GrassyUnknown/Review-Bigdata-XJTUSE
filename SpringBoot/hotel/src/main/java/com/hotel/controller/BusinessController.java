@@ -33,10 +33,9 @@ public class BusinessController {
         return R.success("查找成功",businessList);
     }
 
-    @GetMapping("searchBusinessList/{keyword}")
-    public R searchBusinessList(@PathVariable String keyword) {
-        System.out.println(keyword);
-        List<Business> businessList = businessService.searchBusinessList(keyword);
+    @GetMapping("searchBusinessList/keyword={keyword}&latitude={latitude}&longitude={longitude}&userid={userid}")
+    public R searchBusinessList(@PathVariable String keyword,@PathVariable double latitude,@PathVariable double longitude,@PathVariable String userid) {
+        List<Business> businessList = businessService.searchBusinessList(keyword,latitude,longitude,userid);
         return R.success("查找成功",businessList);
     }
 
