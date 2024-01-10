@@ -1,7 +1,8 @@
 <template>
   <el-container>
     <el-aside class="album-slide">
-<!--      <el-image class="album-img" fit="contain" :src="attachImageUrl(songDetails.pic)" />-->
+      <el-image class="album-img" fit="contain" :src="attachImageUrl(songDetails.pic)" />
+      <h3 class="album-info">Welcome To</h3>
       <h3 class="album-info">{{ songDetails.businessName }}</h3>
     </el-aside>
     <el-main class="album-main">
@@ -60,13 +61,14 @@ export default defineComponent({
     const jsonList = ref([]); // 存放的介绍
 
     // 赋值
-    // jsonList.value=songDetails.value.attributes;  // 显示简介
-    // alert(jsonList.value)
     nowSongListId.value = songDetails.value.businessId; // 给歌单ID赋值
     nowScore.value = songDetails.value.stars;
     nowRank.value = songDetails.value.stars;
-
+    // alert(songDetails.value.businessId)
     // alert(nowRank.value)
+
+
+
     // 收集歌单里面的歌曲
     async function getSongId(id) {
       const result = (await HttpManager.getListSongOfSongId(id)) as ResponseBody;
@@ -129,7 +131,7 @@ export default defineComponent({
       disabledRank,
       assistText,
       currentSongList,
-      songListId: nowSongListId,
+      songListId: songDetails,
       attachImageUrl: HttpManager.attachImageUrl,
       pushValue,
     };

@@ -91,7 +91,8 @@ const HttpManager = {
   //获取所有的海报
   getBannerList: () => get("banner/getAllBanner"),
   getHotBusinessList:() => get("business/getHotBusinessList"),
-  getHotUserList:() => get("user/getHotUserList")
+  getHotUserList:() => get("user/getHotUserList"),
+  getCommentList: (businessId) => get(`review/list/${businessId}`),
 };
 
 

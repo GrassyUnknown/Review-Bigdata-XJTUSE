@@ -21,7 +21,7 @@ const hotUserList = ref([]);      //  用户列表
 try {
 
   HttpManager.getHotBusinessList().then((res) => {
-    hotBusinessList.value = (res as ResponseBody).data.slice(0, 10);
+    hotBusinessList.value = (res as ResponseBody).data.slice(0,10);
   });
 
   HttpManager.getHotUserList().then((res) => {
