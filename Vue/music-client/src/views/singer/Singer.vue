@@ -25,7 +25,7 @@ import {useStore} from "vuex";
 import mixin from "@/mixins/mixin";
 
 // data
-const activeName = ref("全部歌手");
+const activeName = ref("全部好友");
 const pageSize = ref(15); // 页数
 const currentPage = ref(1); // 当前页
 const allPlayList = ref([]);
@@ -57,7 +57,7 @@ function handleChangeView(item) {
   activeName.value = item.name;
   allPlayList.value = [];
   if (item.name === "全部好友") {
-    getAllSinger();
+    getAllSinger(userId.value);
   } else {
     getSingerSex(item.type);
   }
