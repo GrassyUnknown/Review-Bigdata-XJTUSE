@@ -12,4 +12,6 @@ public interface UserService {
     User getUserById(String userid);
 
     User login(String userid,String username);
+
+    List<User> getRecommendFriendList(String userid);
 }

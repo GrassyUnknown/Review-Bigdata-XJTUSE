@@ -6,6 +6,7 @@ import com.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,5 +35,16 @@ public class UserServiceImpl implements UserService {
         List<User> user=userMapper.login(userid,username);
         if(user.isEmpty())return null;
         else return user.get(0);
+    }
+
+    @Override
+    public List<User> getRecommendFriendList(String userid) {
+        List<User> recommendFriends = new ArrayList<>();
+        for(User friend : getUserFriendList(userid)){
+            recommendFriends.addAll(getUserFriendList(friend.getUserId()));
+        }
+        User user=getUserById(userid);
+        recommendFriends.addAll(userMapper.getSimilarNameList(user.getUserName()));
+        return recommendFriends;
     }
 }

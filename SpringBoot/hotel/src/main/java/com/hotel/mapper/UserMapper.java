@@ -21,4 +21,7 @@ public interface UserMapper {
 
     @Select("select * from user where user_id = #{userid} and user_name = #{username}")
     List<User> login(String userid, String username);
+
+    @Select("select * from user where user_name like '%${username}%' limit 10")
+    List<User> getSimilarNameList(String username);
 }

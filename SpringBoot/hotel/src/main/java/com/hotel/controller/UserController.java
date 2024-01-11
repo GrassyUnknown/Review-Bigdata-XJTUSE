@@ -22,9 +22,9 @@ public class UserController {
     }
 
     @GetMapping("getHotUserList")
-    public R getHotBusinessList() {
-        List<User> businessList = userService.getHotUserList();
-        return R.success("查找成功",businessList);
+    public R getHotUserList() {
+        List<User> userList = userService.getHotUserList();
+        return R.success("查找成功",userList);
     }
 
     @GetMapping("login/username={userid}&password={username}")
@@ -38,6 +38,12 @@ public class UserController {
     public R getUserById(@PathVariable String userid) {
         User user = userService.getUserById(userid);
         return R.success("查找成功",user);
+    }
+
+    @GetMapping("getRecommendFriendList/{userid}")
+    public R getRecommendFriendList(@PathVariable String userid){
+        List<User> userList = userService.getRecommendFriendList(userid);
+        return R.success("查找成功", userList);
     }
 
 }
