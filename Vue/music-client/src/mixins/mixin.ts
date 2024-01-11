@@ -110,6 +110,7 @@ export default function () {
       case RouterName.SignOut:
       case RouterName.Lyric:
       case RouterName.Error:
+      case RouterName.MySearch:
       default:
         proxy.$router.push({ path: options.path });
         break;

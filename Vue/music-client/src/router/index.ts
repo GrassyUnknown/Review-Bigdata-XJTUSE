@@ -67,6 +67,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/search/Search.vue"),
       },
       {
+        path:"mySearch",
+        name:"mySearch",
+        component:() => import("@/views/mySearch/mySearch.vue"),
+      },
+      {
         path: "/personal-data",
         name: "personal-data",
         component: () => import("@/views/setting/PersonalData.vue"),

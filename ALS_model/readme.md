@@ -22,7 +22,7 @@
 2. 相比Spark只能使用CPU训练，PyTorch可以使用GPU进行深度学习，更好地发挥计算机性能，以得到更好的效果
 
 
-# 2. 代码及注释
+# 2. 模型代码及注释
 
 ```
 import torch
@@ -157,17 +157,205 @@ plt.show()
 
 `lr` 是学习率（learning rate），它是优化算法中的一个超参数，决定了在每次参数更新中应用的步长大小。学习率越大，模型参数更新得越快，但可能会导致模型不稳定。学习率越小，模型更新得越慢，但更稳定。选择适当的学习率是优化算法的关键，通常需要通过实验来确定。本模型中由于计算机性能有限，需要较快收敛，设置为0.05
 
-## 3.3 num_epoches
+## 3.3 num_epochs
 
 `num_epochs` 是训练过程中的轮数，表示整个训练数据集被完整遍历的次数。增加训练轮数可能有助于模型更好地学习数据的模式，但过多的训练轮次可能导致过拟合。通常使用验证集的性能来确定合适的训练轮次。根据loss-epoch图，在50次时基本已经收敛
 
 ## 3.4 rmse
 
-`rmse` 是均方根误差（Root Mean Square Error），通常用于评估回归模型的性能。在推荐系统中，`rmse` 可以用来度量模型预测评分与实际评分之间的差异。`rmse` 越小，表示模型的预测越准确。其计算方式是对预测值与实际值的差异取平方，求平均，然后取平方根。在推荐系统中，`rmse` 的计算可以帮助评估模型的准确性和泛化性。比较各次训练得到模型的rmse，在参数按上述进行设置时，得到最优的值为1.03
+`rmse` 是均方根误差（Root Mean Square Error），通常用于评估回归模型的性能。在推荐系统中，`rmse` 可以用来度量模型预测评分与实际评分之间的差异。`rmse` 越小，表示模型的预测越准确。其计算方式是对预测值与实际值的差异取平方，求平均，然后取平方根。在推荐系统中，`rmse` 的计算可以帮助评估模型的准确性和泛化性。比较各次训练得到模型的`rmse`，在参数按上述进行设置时，得到最优的值为1.03
 
+# 4. 基于模型的推荐算法
 
+用户搜索后，根据加权计算出的推荐分对商家进行排序，各部分权值为：
 
+距离分：0.3    热度分：0.2   星数评分：0.5
 
+## 4.1 距离分
+
+step1：根据用户和商家经纬度，采用 Haversine 公式计算出两点间距离
+
+step2：采用类似sigmoid的函数将距离映射为0-1之间的推荐分，经反复调试该函数在距离为100公里左右时最敏感，在距离太远或太近时均不敏感，充分体现了用户对商家距离的实际感受。映射函数如下：
+$$
+dScore = 1- \frac{1}{1+e^{1-\frac{distance}{100}}}
+$$
+
+## 4.2 热度分
+
+根据商家被评论数进行计算，与最高评论数比较，将评论数映射为0-1的值。
+
+## 4.3 星数评分
+
+<mark>**对于活跃用户看热门商家，采用ALS模型预测个性化评分，是本项目的最大亮点。**</mark>具体实现时，在Java项目中创建PythonCaller类，实现Java程序与Python脚本的通信，在Python脚本中，加载训练好的ALS模型进行计算。
+
+其他情况下，直接采用商家的评分，不针对每个用户进行个性化预测。
+
+得出评分后将0-5的评分映射为0-1的值。
+
+# 5. 推荐算法代码及注释
+
+## 5.1 返回推荐列表
+
+```
+@Override
+public List<Business> searchBusinessList(String keyword, double latitude, double longitude, String userid) {
+    // 根据关键字从数据库中检索商家列表
+    List<Business> businesses = businessMapper.searchBusinessList(keyword);
+
+    // 初始化一个Map，用于存储商家及其计算得分
+    Map<Business, Double> unsortedMap = new HashMap<>();
+
+    // 用于存储需要进行预测的商家和对应的索引的列表
+    ArrayList<Business> toPredict = new ArrayList<>();
+    ArrayList<Integer> toPredictIndex = new ArrayList<>();
+    int uindex = 0;
+
+    // 遍历商家列表
+    for (Business b : businesses) {
+        // 根据用户ID获取对应的用户信息
+        User u = userMapper.getUserById(userid).get(0);
+
+        // 检查商家和用户是否具有有效的索引
+        if (b.getBusinessIndex() != null && u.getUserIndex() != null) {
+            uindex = u.getUserIndex();
+            toPredict.add(b);
+            toPredictIndex.add(b.getBusinessIndex());
+            break;
+        }
+
+        // 计算商家与用户当前位置的距离得分
+        double distance = haversineDistance(b.getLatitude(), b.getLongitude(), latitude, longitude);
+        distance = (distance / 100) - 1;
+        double dScore = 1 - 1 / (1 + Math.exp(-distance));
+
+        // 计算热度得分和评分得分
+        double hot = (double) b.getReviewCount() / 7568;
+        double rate = b.getStars();
+        rate *= 0.2;
+
+        // 计算总得分并将商家及其得分加入Map
+        double score = dScore * 0.3 + hot * 0.2 + rate * 0.5;
+        unsortedMap.put(b, score);
+    }
+
+    // 如果有商家需要预测
+    if (toPredict.size() > 0) {
+        // 调用Python模块进行预测
+        ArrayList<Double> predictResult = PythonCaller.predict(uindex, toPredictIndex);
+
+        // 更新预测得分并加入Map
+        for (int i = 0; i < toPredict.size(); i++) {
+            Business b = toPredict.get(i);
+            double distance = haversineDistance(b.getLatitude(), b.getLongitude(), latitude, longitude);
+            distance = (distance / 100) - 1;
+            double dScore = 1 - 1 / (1 + Math.exp(-distance));
+            double hot = (double) b.getReviewCount() / 7568;
+            double rate = predictResult.get(i);
+            rate *= 0.2;
+            double score = dScore * 0.3 + hot * 0.2 + rate * 0.5;
+            unsortedMap.put(b, score);
+        }
+    }
+
+    // 将商家及其得分按得分降序排序
+    List<Map.Entry<Business, Double>> entryList = new ArrayList<>(unsortedMap.entrySet());
+    Collections.sort(entryList, new Comparator<Map.Entry<Business, Double>>() {
+        @Override
+        public int compare(Map.Entry<Business, Double> entry1, Map.Entry<Business, Double> entry2) {
+            return entry2.getValue().compareTo(entry1.getValue());
+        }
+    });
+
+    // 生成最终的商家列表并返回
+    ArrayList<Business> result = new ArrayList<>();
+    for (Map.Entry<Business, Double> entry : entryList) {
+        result.add(entry.getKey());
+    }
+    return result;
+}
+```
+
+## 5.2 计算地球上两点距离
+
+```
+public double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
+    // 将经纬度转换为弧度
+    lat1 = toRadians(lat1);
+    lon1 = toRadians(lon1);
+    lat2 = toRadians(lat2);
+    lon2 = toRadians(lon2);
+
+    // Haversine 公式
+    double dlat = lat2 - lat1;
+    double dlon = lon2 - lon1;
+    double a = pow(sin(dlat / 2), 2) + cos(lat1) * cos(lat2) * pow(sin(dlon / 2), 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+    // 地球半径（单位：km）
+    double R = 6371.0;
+
+    // 计算距离
+    double distance = R * c;
+    return distance;
+}
+```
+
+## 5.3 Java项目中调用Python
+
+```
+public class PythonCaller {
+    /* 调用Python模块进行预测
+     * @param user_index       用户索引
+     * @param business_index   商家索引
+     * @return                 预测结果
+     */
+    public static ArrayList<Double> predict(int user_index, ArrayList<Integer> business_index) {
+        // 初始化进程
+        Process proc;
+        try {
+            // 执行Python脚本的路径
+            proc = Runtime.getRuntime().exec("python E:\\学\\大3-1\\生产实习\\big-data\\SpringBoot\\hotel\\src\\main\\test-model.py");
+
+            // 获取输出流，向Python脚本传递参数
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(proc.getOutputStream()));
+            out.write(String.valueOf(user_index));
+            out.newLine();
+            out.write(String.valueOf(business_index.size()));
+            out.newLine();
+            for (int i = 0; i < business_index.size(); i++) {
+                out.write(String.valueOf(business_index.get(i)));
+                out.newLine();
+            }
+            out.flush();
+
+            // 获取输入流，读取Python脚本的输出
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            ArrayList<Double> results = new ArrayList<>();
+            String line = null;
+
+            // 逐行读取Python脚本的输出，将结果添加到列表中
+            while ((line = in.readLine()) != null) {
+                results.add(Double.valueOf(line));
+            }
+
+            // 关闭输入输出流，等待进程执行结束
+            in.close();
+            out.close();
+            proc.waitFor();
+
+            // 返回预测结果列表
+            return results;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        // 返回空值，表示调用出现异常
+        return null;
+    }
+}
+```
 
 
 

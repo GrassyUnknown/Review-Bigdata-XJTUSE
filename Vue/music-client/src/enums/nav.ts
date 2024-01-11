@@ -1,11 +1,12 @@
-import { RouterName } from "./router-name";
+import {RouterName} from "./router-name";
 
 export const enum NavName {
   Home = "首页",
   SongSheet = "商户",
   Singer = "朋友圈",
+  Search = "搜索",
   Personal = "个人主页",
-  // Setting = "",
+  // Setting = "搜索",
   SignIn = "登录",
   SignUp = "",
   SignOut = "退出",
@@ -24,6 +25,10 @@ export const HEADERNAVLIST = [
   {
     name: NavName.Singer,
     path: RouterName.Singer,
+  },
+  {
+    name: NavName.Search,
+    path: RouterName.MySearch,
   },
 ];
 
