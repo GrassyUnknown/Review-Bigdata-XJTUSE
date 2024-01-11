@@ -26,25 +26,12 @@ optimizer = optim.SGD(model.parameters(), lr=0.05)
 optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 model.eval()
 
-# rating = np.empty((2000, 10000), dtype=float)
-# for uid in range(2000):
-#     print(uid)
-#     for iid in range(10000):
-#         user_id = torch.tensor([uid+1])
-#         item_id = torch.tensor([iid+1])
-#         with torch.no_grad():
-#             prediction = model(user_id, item_id)
-#         rating[uid, iid] = prediction.item()
-
-# # 创建HDF5文件并写入矩阵
-# with h5py.File('rating.h5', 'w') as hdf5_file:
-#     hdf5_file.create_dataset('rating_dataset', data=rating)
-# 准备输入数据
-user_id = torch.tensor([int(input())])
-item_id = torch.tensor([int(input())])
-# 进行预测
-with torch.no_grad():
-    prediction = model(user_id, item_id)
-
-# 处理预测结果，例如打印或进行其他后处理操作
-print("预测评分:", prediction.item())
+uid = int(input())
+inum = int(input())
+for i in range(inum):
+    iid = int(input())
+    user_id = torch.tensor([uid])
+    item_id = torch.tensor([iid])
+    with torch.no_grad():
+        prediction = model(user_id, item_id)
+    print(prediction.item())
