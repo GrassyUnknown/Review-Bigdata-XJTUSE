@@ -41,6 +41,7 @@ public class BusinessServiceImpl implements BusinessService {
                 break;
             }
             double distance = haversineDistance(b.getLatitude(),b.getLongitude(), latitude, longitude);
+            b.setLatitude((float)distance);
             distance = (distance/100) - 1;
             double dScore = 1 - 1/(1 + exp(-distance));
             double hot = (double)b.getReviewCount()/7568;
@@ -54,6 +55,7 @@ public class BusinessServiceImpl implements BusinessService {
             for (int i = 0; i < toPredict.size(); i++) {
                 Business b = toPredict.get(i);
                 double distance = haversineDistance(b.getLatitude(),b.getLongitude(), latitude, longitude);
+                b.setLatitude((float)distance);
                 distance = (distance/100) - 1;
                 double dScore = 1 - 1/(1 + exp(-distance));
                 double hot = (double)b.getReviewCount()/7568;
