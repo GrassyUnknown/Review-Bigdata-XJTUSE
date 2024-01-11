@@ -57,7 +57,7 @@ const HttpManager = {
   // 返回所有歌手
   getAllSinger: (id) => get(`user/getUserFriendList/${id}`),
   // 通过性别对歌手分类
-  getSingerOfSex: (sex) => get(`singer/sex/detail?sex=${sex}`),
+  getSingerOfSex: (sex) => get(`user/getRecommendFriendList/${sex}`),
 
   // =======================> 收藏 API 完成
   // 返回的指定用户ID的收藏列表

@@ -59,7 +59,7 @@ function handleChangeView(item) {
   if (item.name === "全部好友") {
     getAllSinger(userId.value);
   } else {
-    getSingerSex(item.type);
+    getSingerSex(userId.value);
   }
 }
 
