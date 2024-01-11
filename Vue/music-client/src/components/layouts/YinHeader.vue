@@ -7,9 +7,9 @@
     </div>
     <yin-header-nav class="yin-header-nav" :styleList="headerNavList" :activeName="activeNavName" @click="goPage"></yin-header-nav>
     <!--搜索框-->
-    <div class="header-search">
-      <el-input placeholder="搜索" :prefix-icon="Search" v-model="keywords" @keyup.enter="goSearch()" />
-    </div>
+<!--    <div class="header-search">-->
+<!--      <el-input placeholder="搜索" :prefix-icon="Search" v-model="keywords" @keyup.enter="goSearch()" />-->
+<!--    </div>-->
     <!--设置-->
     <yin-header-nav v-if="!token" :styleList="signList" :activeName="activeNavName" @click="goPage"></yin-header-nav>
     <el-dropdown class="user-wrap" v-if="token" trigger="click">

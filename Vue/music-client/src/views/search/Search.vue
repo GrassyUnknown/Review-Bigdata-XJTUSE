@@ -21,15 +21,15 @@ export default defineComponent({
     return {
       searchNavList: [
         {
-          name: "歌曲",
+          name: "商户",
           value: "SearchSong",
         },
         {
-          name: "歌单",
+          name: "用户",
           value: "SearchSongList",
         },
       ],
-      activeName: "歌曲",
+      activeName: "商户",
       currentView: "SearchSong",
     };
   },
