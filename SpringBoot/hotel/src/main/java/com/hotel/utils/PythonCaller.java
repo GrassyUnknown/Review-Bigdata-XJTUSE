@@ -8,7 +8,7 @@ public class PythonCaller {
     public static ArrayList<Double> predict(int user_index, ArrayList<Integer> business_index) {
         Process proc;
         try {
-            proc = Runtime.getRuntime().exec("python D:\\suncaper\\Project\\big-data\\SpringBoot\\hotel\\src\\main\\test-model.py");
+            proc = Runtime.getRuntime().exec("python E:\\学\\大3-1\\生产实习\\big-data\\SpringBoot\\hotel\\src\\main\\test-model.py");
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(proc.getOutputStream()));
             out.write(String.valueOf(user_index));
             out.newLine();

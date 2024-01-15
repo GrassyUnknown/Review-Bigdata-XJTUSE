@@ -20,7 +20,7 @@ num_users = 2001
 num_items = 10001
 embedding_dim = 5
 model = ALSModel(num_users, num_items, embedding_dim)
-checkpoint = torch.load('D:\\suncaper\\Project\\big-data\\SpringBoot\\hotel\\src\\main\\als_model_checkpoint.pth')
+checkpoint = torch.load('E:\\学\\大3-1\\生产实习\\big-data\\SpringBoot\\hotel\\src\\main\\als_model_checkpoint.pth')
 model.load_state_dict(checkpoint['model_state_dict'])
 optimizer = optim.SGD(model.parameters(), lr=0.05)
 optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
