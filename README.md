@@ -17,4 +17,5 @@
 > http://118.113.19.161:8180/
 
 
-## 本项目由第一小组成员共同完成，请勿盗用
+## 本项目由小组成员共同完成。
+## 项目在gitee完成协作：[未晞/BigData](https://gitee.com/lingchen47/big-data)，这里是项目在github的副本。
